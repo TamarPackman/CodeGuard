@@ -42,3 +42,16 @@ def count_issues_by_type(tree,issue_counts_by_type,function_lengths):
 def get_count_function_length_problem(tree,length_function):
     count = sum(1 for length in length_function.values() if length > 20)
     return count;
+def search_wit_folder_down(start_path):
+    lesson1_path = os.path.dirname(start_path)
+    print(f"dirname {lesson1_path}")
+
+    # עלייה תיקייה אחת למעלה (לתיקייה שמכילה את lesson1 וגם את WIT)
+    parent_path = os.path.abspath(os.path.join(lesson1_path, '..'))
+    print(f"parent_path {parent_path}")
+
+    # רשימת כל התיקיות שם
+    folders = [name for name in os.listdir(parent_path)
+               if os.path.isdir(os.path.join(parent_path, name))]
+
+    print("התיקיות שנמצאות ליד lesson1:", folders)

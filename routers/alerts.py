@@ -5,7 +5,7 @@ import services.common_analysis as common_analysis
 import json
 router = APIRouter()
 @router.post("/alerts")
-async def alerts(file: UploadFile = File(...)):
+async def alerts(file: UploadFile = File(...),target_path: str = Form(...)):
     if not file.filename.endswith(".zip"):
         return JSONResponse(status_code=400, content={"error": "Please upload a zip file"})
     try :
